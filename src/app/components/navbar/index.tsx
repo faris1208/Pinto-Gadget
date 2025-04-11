@@ -4,9 +4,7 @@ import Link from "next/link";
 import styles from "../navbar/styles.module.scss";
 import Image from "next/image";
 import logo from "../../../../public/assets/images/logo.svg";
-// import logos from "../../../../public/assets/images/briclage-2.svg";
 import menu from "../../../../public/assets/images/hamburger_white.svg";
-// import scrolledMenu from "../../../../public/assets/images/hmaburger.svg";
 import exit from "../../../../public/assets/images/hamburger_black.svg";
 import { CartIcon, SearchIcon } from "../icons/icons";
 

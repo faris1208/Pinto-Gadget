@@ -2,7 +2,8 @@
 
 .wrapper {
   width: 100%;
-  background-image: url("../../../../../public//assets/images/hero/Frame\ 1686562092.svg");
+//   background-image: url("../../../../../public//assets/images/hero/Frame\ 1686562092.svg");
+  background: radial-gradient(50% 50% at 50% 50%, #383737 0%, #0E0E0E 100%);
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -62,7 +63,8 @@
 
   @include responsive("mobile") {
     width: 100%;
-    background-image: url("../../../../../public//assets/images/hero/Frame\ 1686562092.svg");
+    // background-image: url("../../../../../public//assets/images/hero/Frame\ 1686562092.svg");
+    background: radial-gradient(50% 50% at 50% 50%, #383737 0%, #0E0E0E 100%);
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;

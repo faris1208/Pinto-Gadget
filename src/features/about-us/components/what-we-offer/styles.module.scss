@@ -123,6 +123,7 @@
 }
 
 @include responsive("mobile"){
+ 
   .wrapper {
     background: #f5f5f5;
     width: 100%;
@@ -155,7 +156,6 @@
     }
   
     p {
-      line-height: 1.5;
       font-family: Poppins;
       font-weight: 400;
       font-size: 14px;
@@ -168,14 +168,12 @@
   
   .scrollContainer {
     width: 100%;
-    display: none;
+    display: flex;
     flex-direction: column;
     gap: 24px;
     overflow-x: auto;
-    // padding-bottom: 10px;
-    padding: 50px 0px 10px 0px;
+    padding: 30px 0px 10px 0px;
     scrollbar-width: none;
-    border: 2px solid red;
   
     &::-webkit-scrollbar {
       height: 6px;
@@ -188,42 +186,32 @@
   }
   
   .card {
-    border: 2px solid red;
-    min-width: 150px;
-    // width: 100%;
-    // max-width: 200px;
+    min-width: 250px;
     height: 250px;
     border-radius: 24px;
-    // padding: 20px;
-    // box-sizing: border-box;
     flex-shrink: 0;
     display: flex;
     flex-direction: column;
-    // align-items: center;
-    // justify-content: flex-end;
     text-align: center;
+    align-items: center;
     color: white;
-    // position: relative;
+    position: relative;
     z-index: 100;
-    padding: 0px 0px 10px 0px;
+    padding: 0px 20px 10px 0px;
+    margin-top: 30px;
   
     .image {
-      //   position: absolute;
-      //   top: 20px;
-      //   left: 50%;
-      //   width: 100% !important;
-      min-width: 250px;
+        position: absolute;
+        top:-40px;
+        left: 10px;
+        width: 100%;
       height: unset !important;
-      margin-top: -40px;
-      z-index: 999;
-      //   transform: translateX(-50%);
     }
   
     .name {
       margin-top: auto;
       font-weight: 600;
-      margin-bottom: 4px;
-  
+      margin-bottom: 10px;
       font-family: Poppins;
       font-weight: 400;
       font-size: 14px;
@@ -233,19 +221,21 @@
     }
   
     .price {
+      color: #BFBFBF;
       font-family: Poppins;
-      font-weight: 500;
-      font-size: 16px;
+      font-weight: 400;
+      font-size: 14px;
       line-height: 100%;
       letter-spacing: 0%;
-      color: #fff;
+      text-align: center;
+      width: 80%;
     }
   }
   
   /* Background gradients */
-  .bgBluePurple {
-    background: linear-gradient(180deg, #1c1c2e 0%, #3d3d5c 100%);
-    background: linear-gradient(180deg, #74c1e7 0%, #140526 100%);
+  .bgBlueBlue {
+    background: linear-gradient(180deg, #74C1E7 0%, #140526 100%);
+  
   }
   
   .bgOrange {
@@ -257,4 +247,5 @@
   .bgTeal {
     background: linear-gradient(135deg, #009688, #26c6da);
   }
+
 }

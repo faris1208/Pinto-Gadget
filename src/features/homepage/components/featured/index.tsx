@@ -42,7 +42,7 @@ export default function FeaturedProduct() {
               <div className={styles.overlay}></div>
               <div className={styles.content}>
                 <p className={styles.label}>{item.name}</p>
-                <ArrowIcon />
+                <ArrowIcon className={styles.icon} />
               </div>
             </div>
           ))}

@@ -1,0 +1,197 @@
+@import "../../../styles/index.scss";
+
+.wrapper{
+    width: 100%;
+    max-width: 397px;
+    min-height: 450px;
+    background-color: #fff;
+    border-radius: 5px;
+    background-image: url("../../../../public/assets/images/laptop.jpeg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+
+        .card_box{
+            width: 95%;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            gap: 10px;
+            padding-top: 10px;
+            padding-right: 15px;
+            padding-bottom: 10px;
+            padding-left: 15px;
+            box-shadow: 0px 2px 6.1px 2px #0000000D;
+            position: absolute;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            
+
+            .card_box_contents{
+                // display: flex;
+                // gap: 10px;
+
+                h4{
+                    font-family: Poppins;
+                    font-weight: 400;
+                    font-size: 16px;
+                    line-height: 100%;
+                    letter-spacing: 0%;
+                    color: #1E1E1E;
+                    
+                }
+
+                .check_box{
+                    margin-top: 10px;
+                    
+                }
+            }
+
+            .location_container{
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin-top: 20px;
+
+                .amount{
+
+                    p{
+                        font-family: Poppins;
+                        font-weight: 600;
+                        font-size: 20px;
+                        line-height: 100%;
+                        letter-spacing: 0%;
+                        color: #1E1E1E;
+                    }
+                }
+
+                button{
+                    border: 2px solid yellow;
+                    padding: 10px 20px;
+                    font-family: Roboto Serif;
+                    font-weight: 600;
+                    font-size: 14px;
+                    line-height: 100%;
+                    letter-spacing: 0%;
+                    cursor: pointer;
+                    border: 1px solid #F5F5F5BF;
+                    background: #022B466B;
+                    backdrop-filter: blur(16.299999237060547px);
+                    border-radius: 12px;
+                    color: #fff;
+
+                    &:hover{
+                        background: #011c2e6b;
+                    }
+                }
+            }
+        }
+}
+
+@include responsive("mobile"){
+    .wrapper{
+        width: 100%;
+        max-width: 344px;
+        min-height: 300px;
+        padding: 4px;
+        background-color: #fff;
+        border-radius: 5px;
+    
+        .house_img{
+            position: relative;
+    
+            .listing_card_img{
+                width: 100%;
+                border-radius: 8px;
+            }
+    
+            .card_box{
+                padding: 0px 5px;
+                width: 80%;
+                position: absolute;
+                bottom: 4px;
+                border-radius: 0px 8px 0px ;
+                padding: 5px;
+                background-color: #fff;
+    
+                .card_box_contents{
+                    display: flex;
+                    gap: 10px;
+    
+                    h4{
+                        font-family: Open Sans;
+                        font-weight: 700;
+                        font-size: 10px;
+                        line-height: 130%;
+                        letter-spacing: 0px;
+                        color: #000000;
+                    }
+    
+                    .check_box{
+                        display: flex;
+                        gap: 5px;
+                        align-items: center;
+    
+                        p{
+                            font-family: Open Sans;
+                            font-weight: 800;
+                            font-size: 10px;
+                            // line-height: 130%;
+                            letter-spacing: 0px;
+                            text-align: center;
+                            color: #04C900A3;
+                            margin-top: -5px;
+    
+                        }
+                    }
+                }
+    
+                .location_container{
+                    display: grid;
+                    grid-template-columns: 1fr 1fr;
+                    gap: 7px 5px;
+                    margin-top: 10px;
+    
+                    .location_box{
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                        // width: 40%;
+                        // width: 130;
+                        // height: 16;
+
+                        // .locate{
+                        //     color: #8E8E8E ;
+                        //     background-color: green;
+                        // }
+                        
+    
+                        p{
+                            font-family: Open Sans;
+                            font-weight: 500;
+                            font-size: 10px;
+                            // line-height: 130%;
+                            letter-spacing: 0px;
+                            text-align: center;
+                            color: #8E8E8E;
+                            // white-space: pre-line;
+
+                            span{
+                                font-family: Open Sans;
+                                font-weight: 700;
+                                font-size: 10px;
+                                line-height: 130%;
+                                letter-spacing: 0px;
+                                text-align: center;
+                                color: #000000;
+                            }
+                        }
+    
+                    }
+                }
+            }
+        }
+    }
+}

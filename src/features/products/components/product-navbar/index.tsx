@@ -1,14 +1,15 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import styles from "../navbar/styles.module.scss";
+import styles from "../product-navbar/styles.module.scss";
 import Image from "next/image";
-import logo from "../../../../public/assets/images/logo.svg";
-import menu from "../../../../public/assets/images/hamburger_white.svg";
-import exit from "../../../../public/assets/images/hamburger_black.svg";
-import { CartIcon, SearchIcon } from "../icons/icons";
+import logo from "../../../../../public/assets/images/logo.svg";
+import black from "../../../../../public/assets/images/pinto_black_logo.svg";
+import menu from "../../../../../public/assets/images/hamburger_white.svg";
+import exit from "../../../../../public/assets/images/hamburger_black.svg";
+import { BlackCartIcon, BlackSearchIcon,} from "@/app/components/icons/icons";
 
-const NavBar: React.FC<{ admin?: boolean }> = ({ admin }) => {
+const ProductNavBar: React.FC<{ admin?: boolean }> = ({ admin }) => {
   const [color, setColor] = useState<boolean>(false);
   const [mobile, setMobile] = useState<boolean>(true);
   const [scrolled, setScrolled] = useState<boolean>(false);
@@ -67,7 +68,7 @@ const NavBar: React.FC<{ admin?: boolean }> = ({ admin }) => {
           </Link>
           <Link className={styles.black_logo} href="/">
             <Image
-              src={logo}
+              src={black}
               alt="logo"
               width={120}
               className={styles.logo_img}
@@ -104,9 +105,9 @@ const NavBar: React.FC<{ admin?: boolean }> = ({ admin }) => {
         <div className={styles.container_search}>
           <div className={styles.searchBox}>
             <input type="text" placeholder="Search" />
-            <SearchIcon className={styles.searchIcon} />
+            <BlackSearchIcon className={styles.searchIcon} />
           </div>
-          <CartIcon className={styles.cartIcon} />
+          <BlackCartIcon className={styles.cartIcon} />
         </div>
         <div id={styles.Hamburger}>
           <span className="Hamburger span" onClick={toggleMenu}>
@@ -124,4 +125,4 @@ const NavBar: React.FC<{ admin?: boolean }> = ({ admin }) => {
   );
 };
 
-export default NavBar;
+export default ProductNavBar;

@@ -7,8 +7,10 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  height: 100vh;
+  // height: 100vh;
+  height: 150vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
@@ -21,6 +23,7 @@
     width: 100%;
     max-width: 1440px;
     margin: 0 auto;
+    z-index: 999;
 
     h1 {
       font-family: MontserratBold;
@@ -122,5 +125,28 @@
         }
       }
     }
+  }
+}
+
+.heroImage {
+  width: 800px;
+  max-width: 90%;
+  height: auto;
+  // transition: scale 0.3s ease;
+  z-index: 1;
+  will-change: transform, filter;
+  position: absolute;
+  bottom: -50px;
+
+  @include responsive("mobile"){
+    width: 800px;
+    max-width: 90%;
+    height: auto;
+    // transition: scale 0.3s ease;
+    z-index: 1;
+    will-change: transform, filter;
+    position: absolute;
+    bottom: 50px;
+    // top: 0;
   }
 }

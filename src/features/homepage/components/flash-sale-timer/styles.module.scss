@@ -13,13 +13,17 @@
 
         .sale_background{
             width: 45%;
-            height: 600px;
+            height: 800px;
             background-image: url("../../../../../public//assets/images/girl.webp");
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-            position: relative;
+            // position: relative;
             border-radius: 16px;
+
+            position: sticky;
+            top: 0px; 
+            align-self: start;
 
             .sale_overlay{
                 position: absolute;

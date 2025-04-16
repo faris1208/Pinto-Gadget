@@ -26,7 +26,7 @@ export default function AboustUsHeroSection() {
         </div>
       </div>
       <motion.img
-        src="/assets/images/iphone13.svg"
+        src="/assets/images/Iphone13.svg"
         alt="Pinto Gadget"
         style={{
           y,

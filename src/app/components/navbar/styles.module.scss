@@ -3,17 +3,12 @@
 .wrapper {
   width: 90%;
   margin: 0 auto;
-  // outline: 1px solid red;
   @include flex(0);
   position: fixed;
-  // transition: 0.5s;
   left: 50%;
   transform: translate(-50%, -50%);
   top: 20px;
-  // left: 90px;
   z-index: 999;
-  // padding: 0px 40px;
-  width: 90%;
   margin: 0 auto;
   @include responsive("mobile") {
     width: 100%;
@@ -338,13 +333,10 @@
 
   @include responsive("mobile") {
     background: #05050533;
-    // padding: 15px 20px;
     text-align: center;
     @include flex(0);
     width: 100%;
-    // top: 0px;
-    border-radius: 0px;
-    border-radius: 100px;
+    border-radius: 16px;
     
   }
 
@@ -400,6 +392,7 @@
       position: fixed;
       transition: 0.7s;
       z-index: 9999;
+      
 
       span {
         width: 100%;

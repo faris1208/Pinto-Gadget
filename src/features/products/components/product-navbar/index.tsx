@@ -1,124 +1,153 @@
 "use client";
 import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import styles from "../product-navbar/styles.module.scss";
 import Image from "next/image";
-import logo from "../../../../../public/assets/images/logo.svg";
-import black from "../../../../../public/assets/images/pinto_black_logo.svg";
-import menu from "../../../../../public/assets/images/hamburger_white.svg";
+import styles from "../product-navbar/styles.module.scss";
+import logo from "../../../../../public/assets/images/pinto_black_logo.svg";
+// import black from "../../../../public/assets/images/pinto_black_logo.svg";
+import menu from "../../../.././../public/assets/images/hamburger_white.svg";
 import exit from "../../../../../public/assets/images/hamburger_black.svg";
-import { BlackCartIcon, BlackSearchIcon,} from "@/app/components/icons/icons";
+import { BlackCartIcon, BlackSearchIcon } from "@/app/components/icons/icons";
+// import { CartIcon, SearchIcon } from "../icons/icons";
 
-const ProductNavBar: React.FC<{ admin?: boolean }> = ({ admin }) => {
-  const [color, setColor] = useState<boolean>(false);
-  const [mobile, setMobile] = useState<boolean>(true);
-  const [scrolled, setScrolled] = useState<boolean>(false);
+interface NavLink {
+  path: string;
+  label: string;
+  targetSection?: string;
+}
 
-  const handleScroll = (sectionId: string) => {
+interface NavBarProps {
+  admin?: boolean;
+}
+
+const ProductNavBar: React.FC<NavBarProps> = ({ admin = false }) => {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const navLinks: NavLink[] = [
+    { path: "/", label: "Home", targetSection: "why-us" },
+    { path: "/product", label: "Product", targetSection: "about-us" },
+    { path: "/about-us", label: "About Us", targetSection: "property-listing" },
+    { path: "/deals", label: "Deals", targetSection: "faqs" },
+  ];
+
+  const handleScrollToSection = (sectionId?: string) => {
+    if (!sectionId) return;
     const element = document.getElementById(sectionId);
     element?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const toggleMenu = (): void => {
-    setMobile((open) => !open);
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen((prev) => !prev);
   };
 
-  const changeColor = useCallback((): void => {
-    setColor(window.scrollY >= 510);
-    setScrolled(window.scrollY >= 510);
-    if (!mobile) {
-      setMobile(true);
+  const handleScroll = useCallback(() => {
+    const hasScrolled = window.scrollY >= 510;
+    setIsScrolled(hasScrolled);
+    
+    // Close mobile menu when scrolling
+    if (hasScrolled && !isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
     }
-  }, [mobile]);
+  }, [isMobileMenuOpen]);
 
   useEffect(() => {
-    window.addEventListener("scroll", changeColor);
-    return () => window.removeEventListener("scroll", changeColor);
-  }, [changeColor]);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [handleScroll]);
 
   return (
     <div className={styles.wrapper}>
       <nav
-        className={color ? styles.navbar_bg : styles.navbar}
-        style={{
-          backgroundColor: admin ? "#000" : "",
-        }}
+        className={`${isScrolled ? styles.navbar_scrolled : styles.navbar} ${
+          admin ? styles.admin : ""
+        }`}
+        style={{ backgroundColor: admin ? "#000" : undefined }}
       >
-        <div
-          className={styles.logo_image}
-          style={{
-            // outline: "2px solid red",
-            // height: "50px",
-            overflow: "hidden",
-          }}
-        >
-          <Link className={styles.white_logo} href="/">
+        {/* Logo */}
+        <div className={styles.logo_container}>
+          <Link href="/">
             <Image
               src={logo}
-              alt="logo"
+              alt="Company Logo"
               width={120}
-              className={styles.logo_img}
-              style={
-                {
-                  // outline: "2px solid blue",
-                  // marginTop: "-20px",
-                }
-              }
-            />
-          </Link>
-          <Link className={styles.black_logo} href="/">
-            <Image
-              src={black}
-              alt="logo"
-              width={120}
-              className={styles.logo_img}
-              style={
-                {
-                  // outline: "2px solid blue",
-                  // marginTop: "-20px",
-                }
-              }
+              height={40}
+              className={`${styles.logo} ${
+                isScrolled ? styles.logo_black : styles.logo_white
+              }`}
+              priority
             />
           </Link>
         </div>
-        <div
-          className={mobile ? styles.Navbar_List : styles.Navbar_List_isopen}
-        >
+
+        <div className={styles.desktop_nav}>
           <ul>
-            <span onClick={toggleMenu}>
-              <Image className={styles.exx} src={exit} alt="menu" width={30} />
-            </span>
-            <Link href={"/"}>
-              <li onClick={() => handleScroll("why-us")}>Home</li>
-            </Link>
-            <Link href={"/product"}>
-              <li onClick={() => handleScroll("about-us")}>Product</li>
-            </Link>
-            <Link href={"/about-us"}>
-              <li onClick={() => handleScroll("property-listing")}>About Us</li>
-            </Link>
-            <Link href={"/deals"}>
-              <li onClick={() => handleScroll("faqs")}>Deals</li>
-            </Link>
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <Link
+                  href={link.path}
+                  onClick={() => handleScrollToSection(link.targetSection)}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
           </ul>
         </div>
-        <div className={styles.container_search}>
-          <div className={styles.searchBox}>
-            <input type="text" placeholder="Search" />
-            <BlackSearchIcon className={styles.searchIcon} />
+
+        <div className={styles.actions_container}>
+          <div className={styles.search_box}>
+            <input
+              type="text"
+              placeholder="Search"
+              className={styles.search_input}
+            />
+            <BlackSearchIcon className={styles.search_icon} />
           </div>
-          <BlackCartIcon className={styles.cartIcon} />
+          <BlackCartIcon className={styles.cart_icon} />
         </div>
-        <div id={styles.Hamburger}>
-          <span className="Hamburger span" onClick={toggleMenu}>
-            <div className="Hamburger">
-              {mobile ? (
-                <Image src={scrolled ? menu : menu} alt="menu" width={25} />
-              ) : (
-                <Image src={exit} alt="menu" width={20} />
-              )}
-            </div>
-          </span>
+
+        <button
+          className={styles.mobile_menu_toggle}
+          onClick={toggleMobileMenu}
+          aria-label="Toggle menu"
+        >
+          <Image
+            src={isMobileMenuOpen ? exit : isScrolled ? menu : menu}
+            alt="Menu"
+            width={25}
+            height={25}
+          />
+        </button>
+
+        <div
+          className={`${styles.mobile_nav} ${
+            isMobileMenuOpen ? styles.mobile_nav_open : ""
+          }`}
+        >
+          <button
+            className={styles.mobile_nav_close}
+            onClick={toggleMobileMenu}
+            aria-label="Close menu"
+          >
+            <Image src={exit} alt="Close menu" width={30} height={30} />
+          </button>
+          
+          <ul>
+            {navLinks.map((link) => (
+              <li key={link.path}>
+                <Link
+                  href={link.path}
+                  onClick={() => {
+                    handleScrollToSection(link.targetSection);
+                    toggleMobileMenu();
+                  }}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
         </div>
       </nav>
     </div>

@@ -143,15 +143,15 @@
   
 
   @include responsive("mobile"){
-    width: 80%;
+    width: 100%;
     max-width: 90%;
     height: auto;
     // transition: scale 0.3s ease;
     z-index: 1;
     will-change: transform, filter;
     position: absolute;
-    bottom: 50px;
-    // top: 0;
+    bottom: 0px;
+    top: 120px;
     overflow: hidden;
   }
 }
